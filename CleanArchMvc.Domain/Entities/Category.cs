@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace CleanArchMvc.Domain.Entities
 {
-    public sealed class Category
+    public sealed class Category : Entity
     {
-        public int Id { get; private set; }
         public string Name { get; private set; }
+
+        //propriedade navegação EF
+        public ICollection<Product> Products { get; set; }
 
         public Category(string name)
         {
@@ -26,8 +28,6 @@ namespace CleanArchMvc.Domain.Entities
         {
             ValidateDomainName(name);
         }
-
-        public ICollection<Product> Products { get; set; }
 
         private void ValidateDomainName(string name)
         {
