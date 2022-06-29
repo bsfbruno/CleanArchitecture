@@ -41,7 +41,7 @@ namespace CleanArchMvc.Domain.Entities
         {
             DomainExceptionValidation.When(id < 0, "Invalid Id value");
 
-            Id = Id;
+            Id = id;
         }
     }
 }
