@@ -34,7 +34,7 @@ namespace CleanArchMvc.WebUI.Controllers
                 await _categoryService.Add(categoryDto);
                 return RedirectToAction(nameof(Index));
             }
-            
+
             return View(categoryDto);
         }
 
@@ -68,6 +68,25 @@ namespace CleanArchMvc.WebUI.Controllers
             }
 
             return View(categoryDTO);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id == 0) return NotFound();
+
+            var categoryDto = await _categoryService.GetById(id);
+
+            if (categoryDto == null) return NotFound();
+
+            return View(categoryDto);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _categoryService.Remove(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
