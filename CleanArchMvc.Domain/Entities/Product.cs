@@ -17,7 +17,7 @@ namespace CleanArchMvc.Domain.Entities
 
         //propriedade navegação EF
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
         public Product(int id, string name, string description, decimal price, int stock, string image)
         {
